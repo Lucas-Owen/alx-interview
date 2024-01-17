@@ -22,6 +22,7 @@ def primes():
                 break
             j += 1
 
+
 def minOperations(n):
     """Returns the minimum number of operations required to solve for n"""
     if n <= 1:
