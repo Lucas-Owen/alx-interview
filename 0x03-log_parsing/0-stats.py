@@ -30,17 +30,17 @@ total_size = 0
 lines = 0
 try:
     for log_line in sys.stdin:
-        try:
-            url_separated = log_line.split("\"")
-            status_file_size = url_separated[2].strip().split(" ")
-            status_code = status_file_size[0]
-            if status_code in status_codes:
-                lines += 1
-                file_size = int(status_file_size[1])
+        status_file_size = log_line.split()
+        if len(status_file_size) > 2:
+            status_code = status_file_size[-2]
+            lines += 1
+            try:
+                file_size = int(status_file_size[-1])
                 total_size += file_size
-                status_codes[status_code] = status_codes[status_code] + 1
-        except (IndexError, ValueError):
-            pass
+                if status_code in status_codes:
+                    status_codes[status_code] = status_codes[status_code] + 1
+            except (IndexError, ValueError):
+                pass
         if lines % 10 == 0:
             printLog(status_codes, total_size)
             lines = 0
