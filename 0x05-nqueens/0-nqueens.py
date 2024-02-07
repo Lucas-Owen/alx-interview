@@ -29,10 +29,9 @@ def nQueens(N, board=None, path=None, i=0):
         board = [[True]*N for _ in range(N)]
     if i == N:
         return path
-    
     for j in range(N):
         if board[i][j]:
-            path.append([i,j])
+            path.append([i, j])
             board_copy = [x.copy() for x in board]
             markBoard(N, board_copy, i, j)
             if nQueens(N, board_copy, path, i+1):
