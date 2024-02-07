@@ -28,7 +28,7 @@ def nQueens(N, board=None, path=None, i=0):
     if board is None:
         board = [[True]*N for _ in range(N)]
     if i == N:
-        return path
+        return True
     for j in range(N):
         if board[i][j]:
             path.append([i, j])
