@@ -13,19 +13,22 @@ def island_perimeter(grid):
     grid is rectangular, with its width and height not exceeding 100
     The grid is completely surrounded by water
     There is only one island (or nothing).
-    The island doesn't have “lakes” (water inside that isn't connected to the water surrounding the island)
+    The island doesn't have “lakes” (water inside that isn't connected to
+    the water surrounding the island)
     """
     # Count the number of zeros around each 1 (excluding diagonally)
     perimeter = 0
-    for i in range(1, len(grid)-1):
-        for j in range(1, len(grid[0])-1):
+    rows = len(grid)
+    for i in range(rows):
+        cols = len(grid[i])
+        for j in range(cols):
             if grid[i][j]:
-                if grid[i-1][j] == 0:
+                if i-1 < 0 or grid[i-1][j] == 0:
                     perimeter += 1
-                if grid[i+1][j] == 0:
+                if i+1 >= rows or grid[i+1][j] == 0:
                     perimeter += 1
-                if grid[i][j-1] == 0:
+                if j-1 < 0 or grid[i][j-1] == 0:
                     perimeter += 1
-                if grid[i][j+1] == 0:
+                if j+1 >= cols or grid[i][j+1] == 0:
                     perimeter += 1
     return perimeter
