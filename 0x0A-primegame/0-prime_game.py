@@ -12,8 +12,7 @@ def isWinner(x, nums):
     Assuming Maria always goes first and both players play optimally,
     this function returns who the winner of each game is
     """
-    if x != len(nums):
-        print("Number of rounds should equal array length")
+    if x < 0 or x != len(nums):
         return None
     # True is Ben, False is Maria
     scores = {True: 0, False: 0, None: 0}
