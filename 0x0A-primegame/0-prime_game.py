@@ -12,11 +12,12 @@ def isWinner(x, nums):
     Assuming Maria always goes first and both players play optimally,
     this function returns who the winner of each game is
     """
-    if x < 0 or x != len(nums):
+    if x < 0 or nums is None or x >= len(nums):
         return None
     # True is Ben, False is Maria
     scores = {True: 0, False: 0, None: 0}
-    for game_round in nums:
+    for i in range(x):
+        game_round = nums[i]
         round_winner = True
         sieve = list(range(2, game_round+1))
         while len(sieve) > 0:
